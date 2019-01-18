@@ -37,9 +37,11 @@ class SaleComponents extends Component
         $sum = ($this->PreviousPrice / $this->CurrentPrice - 1) * 100;
         if ($this->Tolerance <> $sum) {
             $this->Result = 0;
+
             return false;
         } else {
             $this->Result = $sum;
+
             return true;
         }
     }
