@@ -10,7 +10,7 @@ namespace app\components;
 
 use yii\base\Component;
 
-class SaleComponents extends Component
+class ToleranceSale extends Component
 {
     //Допустимое отклонение в %
     private $Tolerance;
@@ -34,8 +34,8 @@ class SaleComponents extends Component
 
     public function diff()
     {
-        $sum = ($this->PreviousPrice / $this->CurrentPrice - 1) * 100;
-        if ($this->Tolerance <> $sum) {
+        $sum = (($this->PreviousPrice - $this->CurrentPrice) / $this->CurrentPrice) * 100;
+        if ($sum > $this->Tolerance) {
             $this->Result = 0;
 
             return false;
@@ -48,6 +48,6 @@ class SaleComponents extends Component
 
     public function getAmount()
     {
-        return $this->Result;
+        return round($this->Result);
     }
 }
