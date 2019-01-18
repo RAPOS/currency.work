@@ -4,6 +4,10 @@
  * User: Admin
  * Date: 18.01.2019
  * Time: 21:51
+ *
+ * Example:
+ * $result = new ToleranceSale(15, 1150, 1238);
+ * print $result->getAmount();
  */
 
 namespace app\components;
