@@ -2,7 +2,6 @@
 namespace app\commands;
 
 use yii\console\Controller;
-use yii\console\ExitCode;
 use app\modules\v1\models\Currency;
 
 class CurrencyController extends Controller
