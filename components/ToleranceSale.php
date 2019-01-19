@@ -6,8 +6,12 @@
  * Time: 21:51
  *
  * Example:
- * $result = new ToleranceSale(15, 1150, 1238);
- * print $result->getAmount();
+ * $Sale = new ToleranceSale();
+ * if ($Sale->diff(15, 1246)) {
+ *      echo 'Hello ' . $Sale->getAmount();
+ *  } else {
+ *      echo 'Fail ' . $Sale->getAmount();
+ *  }
  */
 
 namespace app\components;
