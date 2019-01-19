@@ -16,38 +16,17 @@ use yii\base\Component;
 
 class ToleranceSale extends Component
 {
-    //Допустимое отклонение в %
-    private $Tolerance;
-    //Текущая цена
-    private $CurrentPrice;
-    //Предыдущая цена
-    private $PreviousPrice;
     //Результат в %
     private $Result;
 
-    public function __construct($Tolerance, $CurrentPrice, $PreviousPrice = 0)
+    /*
+     * $Tolerance Допустимое отклонение в %
+     * $CurrentPrice Текущая цена
+     * $PreviousPrice Предыдущая цена
+     */
+    public function diff($Tolerance, $CurrentPrice, $PreviousPrice = 0)
     {
-        $this->Tolerance = $Tolerance;
-        $this->CurrentPrice = $CurrentPrice;
-        $this->PreviousPrice = $PreviousPrice;
-
-        $this->diff();
-
-        parent::__construct();
-    }
-
-    public function diff()
-    {
-        $sum = (($this->PreviousPrice - $this->CurrentPrice) / $this->CurrentPrice) * 100;
-        if ($sum > $this->Tolerance) {
-            $this->Result = 0;
-
-            return false;
-        } else {
-            $this->Result = $sum;
-
-            return true;
-        }
+        $this->Result = (($PreviousPrice - $CurrentPrice) / $CurrentPrice) * 100;
     }
 
     public function getAmount()
