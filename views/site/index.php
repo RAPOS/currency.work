@@ -12,7 +12,8 @@ $this->title = 'My Yii Application';
         <h1>Congratulations!</h1>
         <p>
             <?
-            $Sale = new ToleranceSale(15, 1150, 0);
+            $Sale = new ToleranceSale();
+            $Sale->diff(15, 1246, 0);
             print $Sale->getAmount();
             ?>
         </p>
