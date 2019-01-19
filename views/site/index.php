@@ -13,8 +13,11 @@ $this->title = 'My Yii Application';
         <p>
             <?
             $Sale = new ToleranceSale();
-            $Sale->diff(15, 1246, 0);
-            print $Sale->getAmount();
+            if ($Sale->diff(15, 1246)) {
+                echo 'Hello ' . $Sale->getAmount();
+            } else {
+                echo 'Fail ' . $Sale->getAmount();
+            }
             ?>
         </p>
         <p class="lead">You have successfully created your Yii-powered application.</p>
