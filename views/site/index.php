@@ -12,8 +12,8 @@ $this->title = 'My Yii Application';
         <h1>Congratulations!</h1>
         <p>
             <?
-            $Sale = new ToleranceSale();
-            if ($Sale->diff(15, 1246)) {
+            $Sale = new ToleranceSale(15, 1246);
+            if ($Sale->diff()) {
                 echo 'Hello ' . $Sale->getAmount();
             } else {
                 echo 'Fail ' . $Sale->getAmount();

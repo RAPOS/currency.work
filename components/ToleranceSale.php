@@ -16,25 +16,30 @@
 
 namespace app\components;
 
-use yii\base\Component;
+use yii\base\BaseObject;
 
-class ToleranceSale extends Component
+class ToleranceSale extends BaseObject
 {
+    //Допустимое отклонение в %
+    private $Tolerance;
+    //Текущая цена
+    private $CurrentPrice;
+    //Предыдущая цена
+    private $PreviousPrice;
     //Результат в %
     private $Result;
 
-    /*
-     * $Tolerance Допустимое отклонение в %
-     * $CurrentPrice Текущая цена
-     * $PreviousPrice Предыдущая цена
-     *
-     * В случае, если результат будет больше, чем допустимое отклонение, то возвращаем false
-     */
-    public function diff($Tolerance, $CurrentPrice, $PreviousPrice = 0)
+    public function __construct($Tolerance, $CurrentPrice, $PreviousPrice = 0)
     {
-        $this->Result = (($PreviousPrice - $CurrentPrice) / $CurrentPrice) * 100;
+        parent::__construct();
+    }
 
-        return ($this->Result > $Tolerance) ? false : true;
+    //В случае, если результат будет больше, чем допустимое отклонение, то возвращаем false
+    public function diff()
+    {
+        $this->Result = (($this->PreviousPrice - $this->CurrentPrice) / $this->CurrentPrice) * 100;
+
+        return ($this->Result > $this->Tolerance) ? false : true;
     }
 
     //Результ вычисления
