@@ -46,7 +46,11 @@ $config = [
                 ],
             ],
         ],
-        'db' => $db,
+        'db_Postgre' => $db,
+        'db_SQLite' => [
+			'class' => 'yii\db\Connection',
+			'dsn' => 'sqlite:'.__DIR__ . '/sqlite.db',
+		],
         'urlManager' => [
             'enablePrettyUrl' => true,
 			'enableStrictParsing' => false,

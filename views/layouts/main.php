@@ -26,37 +26,9 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-<div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
-        ],
-    ]);
-    NavBar::end();
-    ?>
+<div class="page">
+    <?=$this->render('_mobile_menu')?>
+    <?=$this->render('_header')?>
 
     <div class="container">
         <?= Breadcrumbs::widget([
@@ -65,16 +37,20 @@ AppAsset::register($this);
         <?= Alert::widget() ?>
         <?= $content ?>
     </div>
+
+    <footer class="footer footer2018">
+        <div class="footer__line footer__line--bot">
+            <div class="footer__copyright">
+                <p class="footer__cnt bold  copyright">© TopHotels 2003-<?= date('Y') ?></p>
+                <a href="#legal-information-pp" class="legal-information-pp footer__cnt-link legal ">правовая информация</a>
+            </div>
+
+            <div class="footer__cnt-wrap">
+                <p class="footer__cnt footer__cnt--sm fz12 footer-text">Все права защищены. Перепечатка, включение информации, содержащейся в рекламных и иных материалах сайта, во всевозможные базы данных для дальнейшего их коммерческого использования, размещение таких материалов в любых СМИ и Интернете допускаются только с письменного разрешения редакции сайта. Предоставляемый сервис является информационным. Администрация сайта не несет ответственности за достоверность и качество информации, предоставляемой посетителями сайта, в том числе турфирмами и отельерами. </p>
+            </div>
+        </div>
+    </footer>
 </div>
-
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
-    </div>
-</footer>
-
 <?php $this->endBody() ?>
 </body>
 </html>

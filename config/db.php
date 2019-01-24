@@ -2,9 +2,9 @@
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=db_currency',
-    'username' => 'root',
-    'password' => '',
+    'dsn' => 'pgsql:host=db.tophotels.site;port=6432;dbname=dict',
+    'username' => 'dict_reader',
+    'password' => 'dict_reader',
     'charset' => 'utf8',
 
     // Schema cache options (for production environment)
